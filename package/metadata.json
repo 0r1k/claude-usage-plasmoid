@@ -1,0 +1,17 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [{ "Name": "or1k" }],
+        "Category": "System Information",
+        "Description": "Claude plan usage limits (same as /usage) in the system tray",
+        "EnabledByDefault": true,
+        "Icon": "office-chart-ring-symbolic",
+        "Id": "net.or1k.claudeusage",
+        "License": "MIT",
+        "Name": "Claude Usage",
+        "Version": "1.0"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-NotificationArea": "true",
+    "X-Plasma-NotificationAreaCategory": "SystemServices"
+}
