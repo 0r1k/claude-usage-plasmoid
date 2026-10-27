@@ -30,7 +30,7 @@ Requires KDE Plasma 6 and Python 3, and a Claude Code login (`claude` must have 
 so `~/.claude/.credentials.json` exists).
 
 ```sh
-git clone <repo-url> && cd claude-usage-plasmoid
+git clone git@github.com:0r1k/claude-usage-plasmoid.git && cd claude-usage-plasmoid
 ./install.sh
 ```
 
