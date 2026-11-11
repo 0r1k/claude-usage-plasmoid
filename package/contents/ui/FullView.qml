@@ -44,6 +44,25 @@ ColumnLayout {
         }
     }
 
+    Kirigami.InlineMessage {
+        Layout.fillWidth: true
+        visible: root.resetOfferVisible
+        type: Kirigami.MessageType.Positive
+        text: i18n("Free full reset of all limits available until %1. Use it in claude.ai usage settings.", root.fmtClock(root.resetOfferDeadline))
+        actions: [
+            Kirigami.Action {
+                text: i18n("Open settings")
+                icon.name: "internet-web-browser"
+                onTriggered: Qt.openUrlExternally("https://claude.ai/settings/usage")
+            },
+            Kirigami.Action {
+                text: i18n("Already used")
+                icon.name: "dialog-ok"
+                onTriggered: Plasmoid.configuration.resetOfferDismissed = true
+            }
+        ]
+    }
+
     Repeater {
         model: root.usage ? root.usage.limits : []
 

@@ -19,5 +19,9 @@
       <label>Path to .credentials.json (empty = ~/.claude/.credentials.json)</label>
       <default></default>
     </entry>
+    <entry name="resetOfferDismissed" type="Bool">
+      <label>User marked the one-time free usage reset as used</label>
+      <default>false</default>
+    </entry>
   </group>
 </kcfg>

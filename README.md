@@ -7,6 +7,9 @@ Shows Claude plan usage limits (the same data as `/usage` in Claude Code) in the
 - **Tray icon:** outer ring and number = current 5h session %, thin inner ring = weekly %.
   Accent color, orange from 75%, red from 90%.
 - **Click:** popup with every limit, progress bar, reset countdown, weekly per-product breakdown.
+- **Free reset banner:** until Dec 10 2026, 14:00 PT the popup reminds you about Anthropic's
+  one-time free full reset, with a button to claude.ai usage settings and an "Already used"
+  dismiss. The usage API doesn't report this offer, so the deadline is a constant in `main.qml`.
 - **Middle click:** refresh now. **Hover:** tooltip with all limits.
 - Polls every 60 s (configurable) and on every popup open.
 

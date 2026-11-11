@@ -41,11 +41,29 @@ def ms(iso):
         return None
 
 
+def scope_name(scope):
+    """Readable name of a limit scope: a string, or {"model": {"display_name": ...}, "surface": ...}."""
+    if not scope:
+        return ""
+    if isinstance(scope, str):
+        return scope
+    if not isinstance(scope, dict):
+        return ""
+    if scope.get("display_name"):
+        return scope["display_name"]
+    return ", ".join(filter(None, (scope_name(v) for v in scope.values())))
+
+
 def label(kind, scope):
-    text = LABELS.get(kind) or kind.replace("_", " ").capitalize()
-    if scope:
-        text += " (%s)" % (scope if isinstance(scope, str) else scope.get("display_name") or scope)
-    return text
+    name = scope_name(scope)
+    if kind in LABELS:
+        text = LABELS[kind]
+    elif kind.startswith("weekly") and name:
+        # Per-model/per-surface weekly limits, e.g. "weekly_scoped" -> "Current week (Fable)".
+        text = "Current week"
+    else:
+        text = kind.replace("_", " ").capitalize()
+    return "%s (%s)" % (text, name) if name else text
 
 
 def normalize(raw):

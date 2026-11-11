@@ -29,6 +29,11 @@ PlasmoidItem {
         }
     }
 
+    // One-time free full reset announced by Anthropic; the usage API doesn't expose it,
+    // so the deadline is hardcoded: Dec 10 2026, 14:00 PT.
+    readonly property double resetOfferDeadline: Date.UTC(2026, 11, 10, 22, 0)
+    readonly property bool resetOfferVisible: !Plasmoid.configuration.resetOfferDismissed && now < resetOfferDeadline
+
     readonly property string scriptPath: decodeURIComponent(Qt.resolvedUrl("../code/fetch_usage.py").toString().replace(/^file:\/\//, ""))
 
     function shellQuote(s) {
@@ -168,7 +173,7 @@ PlasmoidItem {
     ]
 
     onExpandedChanged: {
-        if (expanded && (!result || !result.ok || Date.now() - result.fetchedAt > 20000))
+        if (root.expanded && (!result || !result.ok || Date.now() - result.fetchedAt > 20000))
             refresh();
     }
 
